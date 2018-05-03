@@ -269,28 +269,29 @@
 		cci@a0c000 {
 			status = "ok";
 
-			camera_rear@60 {
-				compatible = "ovti,ov7251";
-				reg = <0x60>;
+			camera_rear@3b {
+				compatible = "ovti,ov5645";
+				reg = <0x3b>;
 
-				enable-gpios = <&msmgpio 25 GPIO_ACTIVE_HIGH>;
+				enable-gpios = <&msmgpio 26 GPIO_ACTIVE_HIGH>;
+				reset-gpios = <&msmgpio 25 GPIO_ACTIVE_LOW>;
 				pinctrl-names = "default";
 				pinctrl-0 = <&camera_rear_default>;
 
 				clocks = <&mmcc CAMSS_MCLK0_CLK>;
 				clock-names = "xclk";
-				clock-frequency = <24000000>;
+				clock-frequency = <24000000>; //
 
 				vdddo-supply = <&camera_vdddo_1v8>;
 				vdda-supply = <&camera_vdda_2v8>;
 				vddd-supply = <&camera_vddd_1v5>;
 
-				status = "disabled";
+				//status = "disabled";
 
 				port {
-					ov7251_ep: endpoint {
+					ov5645_ep: endpoint {
 						clock-lanes = <1>;
-						data-lanes = <0>;
+						data-lanes = <0 2>;
 						remote-endpoint = <&csiphy0_ep>;
 					};
 				};
@@ -363,9 +364,9 @@
 					reg = <0>;
 					csiphy0_ep: endpoint {
 						clock-lanes = <7>;
-						data-lanes = <0>;
-						remote-endpoint = <&ov7251_ep>;
-						status = "disabled";
+						data-lanes = <0 1>;
+						remote-endpoint = <&ov5645_ep>;
+						//status = "disabled";
 					};
 				};
 				port@1 {
