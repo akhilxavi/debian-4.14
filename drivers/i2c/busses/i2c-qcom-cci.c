@@ -327,7 +327,7 @@ static irqreturn_t cci_isr(int irq, void *dev)
 
 	if (unlikely(val & CCI_IRQ_STATUS_0_I2C_M0_ERROR)) {
 		dev_err_ratelimited(cci->dev, "Master 0 error 0x%08x\n", val);
-		cci->master[0].status = -EIO;
+		cci->master[0].status = 0;
 		writel(CCI_HALT_REQ_I2C_M0_Q0Q1, cci->base + CCI_HALT_REQ);
 	}
 
