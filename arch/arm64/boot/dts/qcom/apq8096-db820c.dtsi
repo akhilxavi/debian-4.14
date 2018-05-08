@@ -270,7 +270,7 @@
 			status = "ok";
 
 			camera_rear@3b {
-				compatible = "ovti,ov5645";
+				compatible = "ovti,ov5640";
 				reg = <0x3b>;
 
 				enable-gpios = <&msmgpio 26 GPIO_ACTIVE_HIGH>;
@@ -280,7 +280,7 @@
 
 				clocks = <&mmcc CAMSS_MCLK0_CLK>;
 				clock-names = "xclk";
-				clock-frequency = <24000000>; //
+				clock-frequency = <23880000>; //
 
 				vdddo-supply = <&camera_vdddo_1v8>;
 				vdda-supply = <&camera_vdda_2v8>;
@@ -289,7 +289,7 @@
 				//status = "disabled";
 
 				port {
-					ov5645_ep: endpoint {
+					ov5640_ep: endpoint {
 						clock-lanes = <1>;
 						data-lanes = <0 2>;
 						remote-endpoint = <&csiphy0_ep>;
@@ -365,7 +365,7 @@
 					csiphy0_ep: endpoint {
 						clock-lanes = <7>;
 						data-lanes = <0 1>;
-						remote-endpoint = <&ov5645_ep>;
+						remote-endpoint = <&ov5640_ep>;
 						//status = "disabled";
 					};
 				};
