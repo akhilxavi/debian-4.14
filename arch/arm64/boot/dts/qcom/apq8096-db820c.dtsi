@@ -144,7 +144,7 @@
 
 			dwc3@6a00000 {
 				extcon = <&usb3_id>;
-				dr_mode = "otg";
+				dr_mode = "host";
 			};
 		};
 
