@@ -99,8 +99,8 @@ static void csiphy_lanes_enable(struct csiphy_device *csiphy,
 	u8 val, l = 0;
 	int i = 0;
 
-	settle_cnt = csiphy_settle_cnt_calc(pixel_clock, bpp, c->num_data,
-					    csiphy->timer_clk_rate);
+	settle_cnt = 0x0E;/*csiphy_settle_cnt_calc(pixel_clock, bpp, c->num_data,
+					    csiphy->timer_clk_rate);*/ //2E
 
 	writel_relaxed(0x1, csiphy->base +
 		       CAMSS_CSI_PHY_GLBL_T_INIT_CFG0);
