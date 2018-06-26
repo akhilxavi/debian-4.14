@@ -10,3 +10,7 @@ dtb-$(CONFIG_ARCH_QCOM)	+= msm8996-mtp.dtb
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
 clean-files	:= *.dtb
+
+ifeq ($(CONFIG_OF_OVERLAY),y)
+DTC_FLAGS += -@
+endif
