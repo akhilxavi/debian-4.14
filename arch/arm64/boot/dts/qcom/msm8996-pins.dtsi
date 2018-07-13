@@ -575,20 +575,20 @@
 	camera_rear_default: camera_rear_default {
 		mux_pwdn {
 			function = "gpio";
-			pins = "gpio26";
+			pins = "gpio29";
 		};
 		config_pwdn {
-			pins = "gpio26";
+			pins = "gpio29";
 			drive-strength = <16>;
 			bias-disable;
 		};
 
 		mux_rst {
 			function = "gpio";
-			pins = "gpio25";
+			pins = "gpio30";
 		};
 		config_rst {
-			pins = "gpio25";
+			pins = "gpio30";
 			drive-strength = <16>;
 			bias-disable;
 		};

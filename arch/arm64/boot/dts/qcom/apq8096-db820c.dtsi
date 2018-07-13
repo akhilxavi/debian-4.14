@@ -273,29 +273,57 @@
 				compatible = "ovti,ov5640";
 				reg = <0x3b>;
 
-				enable-gpios = <&msmgpio 26 GPIO_ACTIVE_HIGH>;
-				reset-gpios = <&msmgpio 25 GPIO_ACTIVE_LOW>;
+				enable-gpios = <&msmgpio 29 GPIO_ACTIVE_HIGH>;
+				reset-gpios = <&msmgpio 30 GPIO_ACTIVE_LOW>;
 				pinctrl-names = "default";
 				pinctrl-0 = <&camera_rear_default>;
 
 				clocks = <&mmcc CAMSS_MCLK0_CLK>;
 				clock-names = "xclk";
-				clock-frequency = <23880000>; //
+				clock-frequency = <23880000>;
 
 				vdddo-supply = <&camera_vdddo_1v8>;
 				vdda-supply = <&camera_vdda_2v8>;
 				vddd-supply = <&camera_vddd_1v5>;
 
-				//status = "disabled";
+				status = "disabled";
 
 				port {
-					ov5640_ep: endpoint {
+					ov56401_ep: endpoint {
 						clock-lanes = <1>;
 						data-lanes = <0 2>;
 						remote-endpoint = <&csiphy0_ep>;
 					};
 				};
 			};
+
+                        camera_rear@10 {
+                                compatible = "sony,imx230";
+                                reg = <0x10>;
+
+                                enable-gpios = <&msmgpio 29 GPIO_ACTIVE_HIGH>;
+                                reset-gpios = <&msmgpio 30 GPIO_ACTIVE_LOW>;
+                                pinctrl-names = "default";
+                                pinctrl-0 = <&camera_rear_default>;
+
+                                clocks = <&mmcc CAMSS_MCLK0_CLK>;
+                                clock-names = "xclk";
+                                clock-frequency = <23880000>;
+
+                                vdddo-supply = <&camera_vdddo_1v8>;
+                                vdda-supply = <&camera_vdda_2v8>;
+                                vddd-supply = <&camera_vddd_1v5>;
+
+                                status = "disabled";
+
+                                port {
+                                        ov5640_ep: endpoint {
+                                                clock-lanes = <1>;
+                                                data-lanes = <0 2>;
+                                                remote-endpoint = <&csiphy0_ep>;
+                                        };
+                                };
+                        };
 
 			camera_board@39 {
 				compatible = "ovti,ov5645";
@@ -366,7 +394,7 @@
 						clock-lanes = <7>;
 						data-lanes = <0 1>;
 						remote-endpoint = <&ov5640_ep>;
-						//status = "disabled";
+						status = "ok";
 					};
 				};
 				port@1 {
